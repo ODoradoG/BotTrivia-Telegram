@@ -1,10 +1,11 @@
 import requests, random
+from googletrans import Translator
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from utils.api import temes, imatges
 from utils.score import puntuacions
 from utils.translations import t, translate_text
-
+translator = Translator()
 async def play_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     lang = context.user_data.get("lang", "en")
     tema = context.user_data.get("tema")
@@ -20,9 +21,10 @@ async def play_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     incorrectes = data["results"][0]["incorrect_answers"]
 
     if lang != "en":
-        pregunta = translate_text(pregunta, lang)
-        correcta = translate_text(correcta, lang)
-        incorrectes = [translate_text(op, lang) for op in incorrectes]
+        pregunta = translator.translate(pregunta, dest=lang).text
+        correcta = translator.translate(correcta, dest=lang).text
+        incorrectes = [translator.translate(ans, dest=lang).text for ans in incorrectes]
+
 
     opcions = incorrectes + [correcta]
     random.shuffle(opcions)

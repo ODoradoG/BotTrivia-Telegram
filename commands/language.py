@@ -1,5 +1,8 @@
+import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler, ContextTypes
+from utils.translations import t
+from commands.start import start_command
 
 async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -17,7 +20,9 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     new_lang = query.data.replace("lang_", "")
     context.user_data["lang"] = new_lang
-    await query.edit_message_text("✅ Language changed!")
+    await query.edit_message_text(t("finally_message", new_lang))
+    await asyncio.sleep(3)
+    await start_command(update, context)
 
 def language():
     return CallbackQueryHandler(language_callback, pattern="^(language|lang_)")

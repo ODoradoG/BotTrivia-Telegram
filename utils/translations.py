@@ -6,10 +6,40 @@ translations = {
         "es": "🎮 ¡Bienvenido a TriviaBot!\nElige un tema o cambia el idioma:",
         "ca": "🎮 Benvingut al TriviaBot!\nTria un tema o canvia l'idioma:"
     },
+    "finally_message": {
+        "en": "✅ Language changed!",
+        "es": "✅ Lenguaje cambiado!",
+        "ca": "✅ Llenguatge canviat! "
+    },
+    "change_language": {
+        "en": "🌐 Change language",
+        "es": "🌐 Cambiar idioma",
+        "ca": "🌐 Canviar l'idioma"
+    },
+    "select_topic": {
+        "en": "🧩 Select a topic.",
+        "es": "🧩 Selecciona un tema.",
+        "ca": "🧩 Tria un tema"
+    },
     "choose_topic": {
         "en": "✅ You chose the topic: {topic}\nType /play to start!",
         "es": "✅ Has elegido el tema: {topic}\nEscribe /play para empezar!",
         "ca": "✅ Has triat el tema: {topic}\nEscriu /play per començar!"
+    },
+    "sport_topic": {
+        "en:": "⚽ Sports",
+        "es": "⚽ Deportes",
+        "ca": "⚽ Esports"
+    },
+    "science_topic": {
+        "en:": "🔬 Science",
+        "es": "🔬 Ciencia",
+        "ca": "🔬 Ciència"
+    },
+    "history_topic": {
+        "en:": "📜 History",
+        "es": "📜 Historia",
+        "ca": "📜 Història"
     },
     "no_topic": {
         "en": "❗ You must first choose a topic with /start",
