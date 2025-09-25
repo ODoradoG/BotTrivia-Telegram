@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from telegram.ext import Application
 from commands.start import start
 from commands.play import play, resposta
@@ -5,9 +7,13 @@ from commands.ranking import ranking
 from commands.language import language
 from commands.theme import theme
 
-TOKEN = "8437974418:AAGq6QP-n1stlE9THHLb33KkA_Im3DCmjfk"
+load_dotenv()
+TOKEN = os.getenv("TELEGRAM_TOKEN")
 
 def main():
+    if not TOKEN:
+        raise ValueError("❌ No se encontró TELEGRAM_TOKEN en el archivo .env")
+    
     app = Application.builder().token(TOKEN).build()
 
     app.add_handler(start())
