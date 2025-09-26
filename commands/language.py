@@ -21,7 +21,7 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     new_lang = query.data.replace("lang_", "")
     context.user_data["lang"] = new_lang
     await query.edit_message_text(t("finally_message", new_lang))
-    await asyncio.sleep(3)
+    await asyncio.sleep(1)
     await start_command(update, context)
 
 def language():

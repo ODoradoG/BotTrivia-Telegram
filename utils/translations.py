@@ -63,9 +63,9 @@ translations = {
         "ca": "❌ Incorrecte! La resposta era: {answer}"
     },
     "ranking": {
-        "en": "🏆 Ranking ({topic}):\n",
-        "es": "🏆 Clasificación ({topic}):\n",
-        "ca": "🏆 Classificació ({topic}):\n"
+        "en": "🏆 Ranking ",
+        "es": "🏆 Clasificación ",
+        "ca": "🏆 Classificació "
     }, 
     "retry":{
         "en": "🔁 If you want to play more use /play or if you want to change de topic then /start",
