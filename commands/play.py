@@ -1,13 +1,19 @@
 import random, html, requests
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
-from utils.api import temes, imatges
 from utils.score import puntuacions
 from utils.translations import t, translate_text
 
+from utils.api import temes, imatges, get_tema
+
 async def play_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     lang = context.user_data.get("lang", "en")
-    tema = context.user_data.get("tema")
+    tema_usuario = context.user_data.get("tema")
+    if not tema_usuario:
+        await update.message.reply_text(t("no_topic", lang))
+        return
+
+    tema = get_tema(tema_usuario)
     if not tema:
         await update.message.reply_text(t("no_topic", lang))
         return
@@ -71,7 +77,8 @@ async def resposta_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if eleccio == correcta:
         puntuacions[user_id]["temes"][tema] += 1
-        text = t("correct", lang, points=puntuacions[user_id]["temes"][tema], topic=tema.capitalize())
+        tema_translation = t(f"{tema}_topic", lang)
+        text = t("correct", lang, points=puntuacions[user_id]["temes"][tema], topic=tema_translation)
     else:
         correcta_traducida = translate_text(correcta_en, lang)
         text = t("incorrect", lang, answer=correcta_traducida)

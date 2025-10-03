@@ -2,7 +2,6 @@ import requests
 import time
 import logging
 
-# Set up logging to see what's happening
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -32,21 +31,10 @@ translations = {
         "es": "✅ Has elegido el tema: {topic}\nEscribe /play para empezar!",
         "ca": "✅ Has triat el tema: {topic}\nEscriu /play per començar!"
     },
-    "sport_topic": {
-        "en": "⚽ Sports",
-        "es": "⚽ Deportes",
-        "ca": "⚽ Esports"
-    },
-    "science_topic": {
-        "en": "🔬 Science",
-        "es": "🔬 Ciencia",
-        "ca": "🔬 Ciència"
-    },
-    "history_topic": {
-        "en": "📜 History",
-        "es": "📜 Historia",
-        "ca": "📜 Història"
-    },
+    "sports_topic": { "en": "⚽ Sports", "es": "⚽ Deportes", "ca": "⚽ Esports" },
+    "science_topic": { "en": "🔬 Science", "es": "🔬 Ciencia", "ca": "🔬 Ciència" },
+    "history_topic": { "en": "📜 History", "es": "📜 Historia", "ca": "📜 Història" },
+
     "no_topic": {
         "en": "❗ You must first choose a topic with /start",
         "es": "❗ Primero debes elegir un tema con /start",
